@@ -1,0 +1,26 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "storefront",
+  "main": "BamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melissag13/Bamazon.git"
+  },
+  "author": "Melissa Garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melissag13/Bamazon/issues"
+  },
+  "homepage": "https://github.com/melissag13/Bamazon#readme",
+  "keywords": [
+    "storefront"
+  ],
+  "dependencies": {
+    "mysql": "^2.11.1",
+    "prompt": "^1.0.0"
+  }
+}
