@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
 displayInventory();
 
 function displayInventory() {
-	connection.query('SELECT ItemId, ProductName, DepartmentName, Price FROM products', function(err, res) {
+	connection.query('SELECT ItemId, ProductName, DepartmentName, Price FROM Products', function(err, res) {
 		if(err){
 			throw err;
 		}else{
@@ -46,7 +46,7 @@ function buyItem() {
 
 
 function checkInventory(id, qty) {
-  var query = 'SELECT StockQuantity, Price FROM products WHERE ItemId = ' + id;
+  var query = 'SELECT StockQuantity, Price FROM Products WHERE ItemId = ' + id;
   connection.query(query, function(err, res) {
     if (err) {
       throw err;
@@ -62,13 +62,13 @@ function checkInventory(id, qty) {
       updateInventory(id, updateQty);
     }
   });
- 
+
 }
 
 
 
 function updateInventory(id, updateQty) {
-  var query = 'UPDATE products SET StockQuantity = ' + updateQty + ' WHERE ItemId = ' + id;
+  var query = 'UPDATE Products SET StockQuantity = ' + updateQty + ' WHERE ItemId = ' + id;
   connection.query(query, function(err, res) {
     if (err) {
       throw err;
