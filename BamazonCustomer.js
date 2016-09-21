@@ -8,9 +8,9 @@ var connection = mysql.createConnection({
 	database: 'Bamazon'
 });
 
-showInventory();
+displayInventory();
 
-function showInventory() {
+function displayInventory() {
 	connection.query('SELECT ItemId, ProductName, DepartmentName, Price FROM products', function(err, res) {
 		if(err){
 			throw err;
@@ -25,13 +25,13 @@ function buyItem() {
   var schema = {
     properties: {
       productid: {
-        description: "Enter item ID of product you wish to purchase ",
+        description: "Enter ID of product you would like to purchase ",
         pattern: /^[0-9]+$/,
-        message: 'Invalid Item ID ',
+        message: 'Invalid ID ',
         required: true
       },
       qty: {
-        description: 'Enter the quantity wanted ',
+        description: 'Enter the quantity you would like ',
         pattern: /^[0-9]+$/,
         message: 'Invalid quantity ',
         required: true
@@ -57,11 +57,12 @@ function checkInventory(id, qty) {
       console.log('Insufficient quantity');
       buyItem();
     } else {
-      console.log('Total cost of purchase: $' + (res[0].Price * qty).toFixed(2));
+      console.log('Your total cost for today: $' + (res[0].Price * qty).toFixed(2));
       var updateQty = res[0].StockQuantity - qty;
       updateInventory(id, updateQty);
     }
   });
+ 
 }
 
 
@@ -72,7 +73,7 @@ function updateInventory(id, updateQty) {
     if (err) {
       throw err;
     } else {
-     console.log('Inventory updated!')
+     console.log('Inventory refreshed')
     }
 
   });
